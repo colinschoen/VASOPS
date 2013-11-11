@@ -12,3 +12,4 @@
 */
 
 Route::get('/', array('as' => 'index', 'uses' => 'IndexController@get_index'));
+Route::any('/ajax/registration', array('as' => 'ajaxRegistration', 'uses' => 'AjaxController@post_registration'));
