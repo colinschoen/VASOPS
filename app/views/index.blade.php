@@ -45,8 +45,14 @@
     </div>
     <button id="applyToStep2" class="btn">I have read and fully understand these rules and regulations</button>
 </div>
+<div style="display:none;" id="applyStep2Success">
+    <div class="alert alert-success">
+        Congratulations your submission was submitted successfully.
+    </div>
+</div>
 <div style="display: none;" id="applyStep2">
-<form class="form-horizontal">
+<div style="display: none;" id="applyStep2Errors"></div>
+<form id="vaApplicationForm" class="form-horizontal">
 <div class="control-group">
     <label class="control-label" for="inputVaName">VA Name</label>
     <div class="controls">
@@ -363,9 +369,9 @@
     </div>
 </div>
 <div class="control-group">
-    <label class="control-label" for="inputConfirmPassword">Confirm Password</label>
+    <label class="control-label" for="inputPassword_confirmation">Confirm Password</label>
     <div class="controls">
-        <input name="inputConfirmPassword" type="password" id="inputConfirmPassword" placeholder="" />
+        <input name="inputPassword_confirmation" type="password" id="inputPassword_confirmation" placeholder="" />
     </div>
 </div>
 <div class="control-group">
