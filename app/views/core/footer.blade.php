@@ -104,8 +104,27 @@
         $('#submitVAForm').click(function() {
             $('#applyStep2').hide('slow');
             $('#submittingAJAX').fadeIn();
+            var vaFormData;
+            vaFormData =  $("#vaApplicationForm").serialize();
+          //  alert(vaFormData);
+            $.ajax({
+                type: "POST",
+                url: "{{URL::route('ajaxRegistration')}}",
+                data: { data: vaFormData }
+            })
+                .done(function(received) {
+                    if (received != "") {
+                        $('#submittingAJAX').hide();
+                        $('#applyStep2').show('slow');
+                        $('#applyStep2Errors').html(received).show('slow');
+                    }
+                    else {
+                        $('#submittingAJAX').hide();
+                        $('#applyStep2Success').fadeIn('slow');
+                    }
+                });
             return false;
-        })
+        });
 
         $("input[name='inputCategory[]']").change(function () {
             var maxAllowed = 5;
@@ -124,9 +143,9 @@
                 $('#numberOfChoicesLabel').text(maxAllowed - cnt).prop('class','label label-warning');
             }
         });
-
-
     });
+
+
 
 
 </script>
