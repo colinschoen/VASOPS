@@ -2,6 +2,18 @@
 
 return array(
 
+	//Multi Authentication
+    'multi' => array(
+        'user' => array(
+            'driver' => 'eloquent',
+            'model' => 'User'
+        ),
+        'consoleuser' => array(
+            'driver' => 'eloquent',
+            'model' => 'ConsoleUser'
+        )
+    ),
+
 	/*
 	|--------------------------------------------------------------------------
 	| Default Authentication Driver
@@ -15,7 +27,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'eloquent',
+//	'driver' => 'eloquent',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +40,7 @@ return array(
 	|
 	*/
 
-	'model' => 'User',
+//	'model' => 'User',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +53,7 @@ return array(
 	|
 	*/
 
-	'table' => 'vas',
+//	'table' => 'vas',
 
 	/*
 	|--------------------------------------------------------------------------
