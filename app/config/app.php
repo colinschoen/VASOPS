@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://rgdev.info/',
+	'url' => 'http://cschoen.me/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => 'SoVrqN30pWMh5sktKQ3Z5dBqiRJPWYtR',
+	'key' => 'SoVrqN30pWMh5sftKl3Z5dBqiRJPWYtR',
 
 	/*
 	|--------------------------------------------------------------------------
