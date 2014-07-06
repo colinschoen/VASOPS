@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://colinschoen.me/',
+	'url' => 'http://vasops.vatsim.net/',
 
 	/*
 	|--------------------------------------------------------------------------
