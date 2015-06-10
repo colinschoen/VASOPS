@@ -35,6 +35,7 @@
         <div class="span12">
             <pre>
                 <strong><i class="fa fa-code fa-fw"></i> Status Log: </strong><br />
+                <span style="font-style: italic">0848z: </span>Estimated time of completion updated to 1025z.
                 <span style="font-style: italic">0725z: </span>Site taken offline for maintenance. Estimated time of completion now 0825z.
                                                                             <strong>-Colin Schoen (1095510)</strong>
             </pre>

@@ -1516,6 +1516,35 @@ class ConsoleController extends BaseController {
         return Redirect::route('consoleemail')->with('message', 'Email successfully sent to <strong>' . $i . '</strong> vas.');
     }
 
+    public function get_news() {
+        $news = News::orderBy("updated_at", "DESC")->get();
+        return View::make('console.news')->with(array("news" => $news));
+    }
+
+    public function post_news() {
+        $header = Input::get('inputHeader');
+        $body = Input::get('inputBody');
+        if ($header == "" || $body == "")
+            return Redirect::route('consolenews')->with("error", "Please ensure that you include both a header and body for your news item.");
+        //Create our new news item
+        $news = new News;
+        $news->header = $header;
+        $news->body = $body;
+        $news->author = Auth::consoleuser()->get()->cid;
+        //Make our news visible by default
+        $news->visible = 1;
+        //Create our record
+        $news->save();
+        return Redirect::route('consolenews')->with("message", "Your news item was created successfully is and is visible on the home page");
+    }
+
+    public function get_newsremove($id) {
+        $news = News::findOrFail($id);
+        //This should be easy...
+        $news->delete();
+        return Redirect::route('consolenews')->with("message", "The news item was successfully removed and is subsequently no longer visible");
+    }
+
 
     //Admin maintenance functions
 

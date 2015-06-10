@@ -130,6 +130,9 @@ Route::post('console/emailtemplates/system/edit', array('as' => 'consolesystemem
 Route::get('console/email', array('as' => 'consoleemail', 'uses' => 'ConsoleController@get_email', 'before' => 'consoleauth1'));
 Route::post('console/email', array('as' => 'consoleemailsend', 'uses' => 'ConsoleController@post_email', 'before' => 'consoleauth1|csrf'));
 Route::get('console/transferownership', array('as' => 'consoletransferownership', 'uses' => 'ConsoleController@get_transferownership', 'before' => 'consoleauth1'));
+Route::get('console/news', array("as" => 'consolenews', 'uses' => 'ConsoleController@get_news', 'before' => 'consoleauth1'));
+Route::post('console/news', array("as" => 'consolecreatenews', 'uses' => 'ConsoleController@post_news', 'before' => 'consoleauth1|csrf'));
+Route::get('console/news/remove/{id}', array('as' => 'consolenewsremove', 'uses' => 'ConsoleController@get_newsremove', 'before' => 'consoleauth1'));
     //------AJAX---------
     Route::post('console/categories/deletechild', array('as' => 'consolecategoriesdeletechild', 'uses' => 'ConsoleController@post_categoriesdeletechild', 'before' => 'consoleauth1|csrf'));
     Route::post('console/categories/deleteparent', array('as' => 'consolecategoriesdeleteparent', 'uses' => 'ConsoleController@post_categoriesdeleteparent', 'before' => 'consoleauth1|csrf'));

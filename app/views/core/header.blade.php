@@ -31,7 +31,25 @@
             <small>1.0</small>
         </h1>
     </div>
-    <!-- /demo-headline -->
+    @if (!empty($news))
+        <div class="row">
+            <div class="span12">
+                <h3>News: </h3>
+                <blockquote>
+                    <div class="panel-group">
+                        @foreach ($news as $n)
+                           <div class="panel panel-default">
+                               <div class="panel-body">
+                                   <strong>{{{ $n->header }}}</strong><hr style="margin-top: 5px; margin-bottom: 12px;" />
+                                   {{{ $n->body }}}
+                               </div>
+                           </div>
+                        @endforeach
+                    </div>
+                </blockquote>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="span3">
             <div class="btn-toolbar">

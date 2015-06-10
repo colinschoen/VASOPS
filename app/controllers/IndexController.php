@@ -21,8 +21,10 @@ public function get_index()
             $categoryChildren[$categoryParent->id] = Category::getChildren($categoryParent->id);
         }
     }
+    //Get our news
+    $news = News::where("visible", "=", 1)->orderBy("updated_at", "DESC")->get();
 
-    return View::make('index')->with(array('fname' => $fname, 'categories' => $categories, 'categoryChildren' => $categoryChildren, 'publicCategories' => $publicCategories));
+    return View::make('index')->with(array('fname' => $fname, 'categories' => $categories, 'categoryChildren' => $categoryChildren, 'publicCategories' => $publicCategories, 'news' => $news));
 }
 
     public function get_tickethash($hash)

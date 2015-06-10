@@ -48,6 +48,9 @@
                 <a href="#"><i class="fa fa-bookmark fa-fw"></i> Administrator Functions<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
+                        <a href="{{ URL::route('consolenews') }}"> <i class="fa fa-newspaper-o fa-fw"></i> News Manager</a>
+                    </li>
+                    <li>
                         <a href="{{ URL::route('consolebroadcasts') }}"> <i class="fa fa-bullhorn fa-fw"></i> Console Broadcasts</a>
                     </li>
                     <li>
