@@ -66,7 +66,10 @@ App::error(function(Exception $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+    $ip = Request::getClientIp();
+    $whitelist = array("173.13.187.110");
+    if (!in_array($ip, $whitelist))
+        return Redirect::route("maintenance");
 });
 
 /*

@@ -1454,39 +1454,39 @@ class ConsoleController extends BaseController {
         return View::make('console.transferownership');
     }
 
-    public function post_transferownership() {
-        $data = array("currentCid" => Input::get('currentCid'), "newCid" => Input::get('newCid'));
-        //Check to see that old CID is a current VA
-        $va = User::where('cid', '=', $data["currentCid"])->count();
-        if ($va < 1) {
-            return 0;
-        }
-        $va2 = User::where('cid', '=', $data["newCid"])->count();
-        if ($va2 > 1) {
-            return 1;
-        }
-        else {
-            //Find all instances of
-            //Return our updates
-        }
-    }
+            public function post_transferownership() {
+                $data = array("currentCid" => Input::get('currentCid'), "newCid" => Input::get('newCid'));
+                //Check to see that old CID is a current VA
+                $va = User::where('cid', '=', $data["currentCid"])->count();
+                if ($va < 1) {
+                    return 0;
+                }
+                $va2 = User::where('cid', '=', $data["newCid"])->count();
+                if ($va2 > 1) {
+                    return 1;
+                }
+                else {
+                    //Find all instances of
+                    //Return our updates
+                }
+            }
 
-    public function post_email() {
-        //Get our form values
-        $recipients = Input::get('inputRecipients');
-        $subject = Input::get('inputSubject');
-        $body = Input::get('inputBody');
-        //Here we go
-        if ($recipients == 0) {
-            $vas = User::where('status', '=', 0)->get();
-        }
-        elseif ($recipients == 1) {
-            $vas = User::where('status', '=', 1)->get();
-        }
-        elseif ($recipients == 2) {
-            $vas = User::where('status', '=', 0)->orWhere('status', '=', 1)->get();
-        }
-        if (empty($vas)) {
+            public function post_email() {
+                //Get our form values
+                $recipients = Input::get('inputRecipients');
+                $subject = Input::get('inputSubject');
+                $body = Input::get('inputBody');
+                //Here we go
+                if ($recipients == 0) {
+                    $vas = User::where('status', '=', 0)->get();
+                }
+                elseif ($recipients == 1) {
+                    $vas = User::where('status', '=', 1)->get();
+                }
+                elseif ($recipients == 2) {
+                    $vas = User::where('status', '=', 0)->orWhere('status', '=', 1)->get();
+                }
+                if (empty($vas)) {
             //Damn them they somehow didn't select a VA what idiots
             return Redirect::route('consoleemail')->with('message', 'Please select a recipient group');
         }

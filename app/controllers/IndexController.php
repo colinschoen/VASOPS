@@ -56,4 +56,8 @@ public function get_index()
 
     }
 
+    public function get_maintenance()
+    {
+        return View::make('maintenance');
+    }
 }
