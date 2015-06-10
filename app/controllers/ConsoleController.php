@@ -1350,7 +1350,8 @@ class ConsoleController extends BaseController {
 
     public function get_stats() {
         //Todo in progress
-        return View::make('console.stats');
+        $clicks = Click::all()->count();
+        return View::make('console.stats')->with(array("count" => $clicks));
     }
 
     public function post_vahiddencategoriessave() {

@@ -14,5 +14,10 @@
             @endif
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12">
+            Total Outbound Clicks: <span class="label label-info">{{{ $count }}}</span>
+        </div>
+    </div>
 </div>
 @include('console.core.footer')
