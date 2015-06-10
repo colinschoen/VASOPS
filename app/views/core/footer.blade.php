@@ -179,6 +179,16 @@
             $('#applyClosingFormTag').show();
         });
 
+        $('#applyToStep2A').on('click', function() {
+            $('#applyStep1').hide();
+            $('#applyStep2A').fadeIn('slow');
+        });
+
+        $('.applyBackToStep1Btn').on('click', function() {
+            $('#applyStep2, #applyStep2A').hide();
+            $('#applyStep1').fadeIn('slow');
+        });
+
         $('#submitVAForm').click(function() {
             $('#applyStep2').hide('slow');
             $('#applyStep2Errors').hide();
@@ -198,7 +208,7 @@
                 .done(function(received) {
                     if (received != "") {
                         $('#submittingAJAX').hide();
-                        $('#applyStep2').show('slow');
+                        $('#applyStep2').fadeIn('slow');
                         $('#applyStep2Errors').html(received).show('slow');
                     }
                     else {
@@ -207,6 +217,31 @@
                     }
                 });
             return false;
+        });
+
+        $('#submitAssociateForm').on('click', function(e) {
+            e.preventDefault();
+            $('#applyStep2A').hide('slow');
+            $('#applyStep2AErrors').hide();
+            $('#submittingAssociateAJAX').fadeIn();
+            var _token = "{{ csrf_token() }}";
+            var formData = new FormData($('vaAssociateForm')[0]);
+            $.ajax({
+                type: "POST",
+                url: "{{ URL::route('ajaxAssociateRegistration') }}",
+                data: formData
+            })
+                    .done(function(received) {
+                        if (received != "") {
+                            $('#submittingAssociateAJAX').hide();
+                            $('#applyStep2A').fadeIn();
+                            $('#applyStep2AErrors').html(received).fadeIn();
+                        }
+                        else {
+                            $('#submittingAssociateAJAX').hide();
+                            $('#applyStep2ASuccess').fadeIn('slow');
+                        }
+                    });
         });
 
         $('#submitLoginForm').click(function() {

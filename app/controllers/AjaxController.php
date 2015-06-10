@@ -311,6 +311,108 @@ class AjaxController extends BaseController {
 
     }
 
+    public function post_associateRegistration()
+    {
+        $post = array();
+        $post['inputCid'] = Input::get('inputCid');
+        $post['inputVaName'] = Input::get('inputVaName');
+        $post['inputUrl'] = Input::get('inputUrl');
+        $post['inputDescription'] = Input::get('inputDescription');
+        $post['inputVatsimImagePageLink'] = Input::get('inputVatsimImagePageLink');
+        $post['inputCountry'] = Input::get('inputCountry');
+        $post['inputName'] = Input::get('inputName');
+        $post['inputEmail'] = Input::get('inputEmail');
+        $post['inputPassword'] = Input::get('inputPassword');
+        $post['inputPassword_confirmation'] = Input::get('inputPassword_confirmation');
+
+//      Format our URL field with the http before if it isn't there already
+        if (!strpos($post['inputUrl'],'http://') AND !strpos($post['inputUrl'],'https://')) {
+            $post['inputUrl'] = 'http://' . $post['inputUrl'];
+        }
+
+        $validator = Validator::make(
+            array(
+                'Cid' => $post['inputCid'],
+                'Va Name' => $post['inputVaName'],
+                'Url' => $post['inputUrl'],
+                'Description' => $post['inputDescription'],
+                'Vatsim Image Page Link' => $post['inputVatsimImagePageLink'],
+                'Country' => $post['inputCountry'],
+                'Name' => $post['inputName'],
+                'Email' => $post['inputEmail'],
+                'Password' => $post['inputPassword'],
+                'Password_confirmation' => $post['inputPassword_confirmation'],
+            ),
+            array(
+                'Cid' => 'required|integer|unique:vas,cid',
+                'Va Name' => 'required',
+                'Url' => 'required|url',
+                'Description' => 'required|max:200',
+                'Vatsim Image Page Link' => 'required|url',
+                'Country' => 'required',
+                'Name' => 'required',
+                'Email' => 'required|email|unique:vas,email',
+                'Password' => 'required|min:6|confirmed',
+                'Password_confirmation' => 'required|min:6',
+            ),
+            array (
+                'Cid.unique' => 'There is already an account with an active virtual airline with that CID.',
+            )
+        );
+
+        if ($validator->fails())
+        {
+            // The given data did not pass validation
+            $messages = $validator->messages();
+            $errorStr = '';
+            foreach ($messages->all('<li>:message</li>') as $message)
+            {
+                $errorStr .= '<div class="alert alert-error">'. $message . '</div>';
+            }
+            echo $errorStr;
+
+        }
+        else {
+
+            //Submit Data
+            //Create an instance of our model
+            $vas = new User;
+            //Map our fields
+            $vas->cid = $post['inputCid'];
+            //This is an associate
+            $vas->associate = 1;
+            //Hash our password
+            $vas->password = Hash::make($post['inputPassword']);
+            $vas->vaname = $post['inputVaName'];
+            $vas->url = $post['inputUrl'];
+            $vas->description = $post['inputDescription'];
+            $vas->vatsimimagepagelink = $post['inputVatsimImagePageLink'];
+            $vas->country = $post['inputCountry'];
+            $vas->name = $post['inputName'];
+            $vas->email = $post['inputEmail'];
+            //All VAs must be approved first so the default status will be 0 for unapproved or not active.
+            $vas->status = '0';
+            //Save our data
+//            $vas->save();
+//TODO ^^^^^^^
+            die();
+            //Great, now let's send our welcome email to the member
+            $template = SystemEmailTemplate::find('registration_received');
+            $subject = $template->subject;
+            $email = $post['inputEmail'];
+            $content = EmailTemplate::replaceContent($template->content, $post['inputCid']);
+            //Send our email
+            $data = array('name' => $post['inputName'], 'email' => $email, 'subject' => $subject);
+            //Alright. Time to do some email sending.
+            Mail::send('email.default', array("content" => $content), function($message) use ($data) {
+                $message->to($data['email'], $data['name'])->subject($data['subject']);
+            });
+        }
+
+    }
+
+
+
     public function post_closeticket() {
         //Pull our AJAX data
         $ticketid = Input::get('data');

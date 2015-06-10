@@ -31,7 +31,7 @@
             <small>1.0</small>
         </h1>
     </div>
-    @if (!empty($news))
+    @if (count($news) > 0)
         <div class="row">
             <div class="span12">
                 <h3>News: </h3>

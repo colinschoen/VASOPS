@@ -21,6 +21,7 @@ Route::get('/passwordreset/{hash}', array('uses' => 'IndexController@get_passwor
 
 //AJAX
 Route::post('/ajax/registration', array('as' => 'ajaxRegistration', 'uses' => 'AjaxController@post_registration', 'before' => 'csrf'));
+Route::post('/ajax/associate/registration', array('as' => 'ajaxAssociateRegistration', 'uses' => 'AjaxController@post_associateRegistration', 'before' => 'csrf'));
 Route::post('/ajax/login', array('as' => 'ajaxLogin', 'uses' => 'AjaxController@post_login'));
 Route::post('/ajax/logout', array('as' => 'ajaxLogout', 'uses' => 'AjaxController@post_logout', 'before' => 'auth'));
 Route::post('/ajax/vaedit', array('as' => 'ajaxVAEdit', 'uses' => 'AjaxController@post_vaedit', 'before' => 'auth|csrf'));
