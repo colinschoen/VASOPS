@@ -69,7 +69,7 @@ App::down(function()
     $ip = Request::getClientIp();
     $whitelist = array("173.13.187.110");
     if (!in_array($ip, $whitelist))
-        return Redirect::route("maintenance");
+        return Response::view('maintenance', array(), 403);
 });
 
 /*
