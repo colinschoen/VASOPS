@@ -423,18 +423,18 @@
             @foreach($categories as $category)
             @if (array_key_exists($category->id, $categoryChildren) && Category::countChildren($category->id) > 0)
             <span>
-                <button id="btnVaCategoryParent" style="margin-bottom: 25px;" class="btn btn-info">{{{ $category->name }}}  <i class="fui fui-plus"></i></button>
+                <button data-catid="{{{ $category->id }}}" id="btnVaCategoryParent" style="margin-bottom: 25px;" @if ($category->special == 1) class="btn btn-special" @else class="btn btn-info" @endif>@if ($category->special == 1) <i class="fa fa-rocket fa-fw"></i> @endif{{{ $category->name }}}  <i class="fui fui-plus"></i></button>
                 <div id="selectedVaInformation" style="display: none; margin-bottom: 10px;">
                     <blockquote>
                         @foreach ($categoryChildren[$category->id] as $child)
-                        <button id="btnSelectVaCategory" style="margin-bottom: 5px;" class="btn btn-success">{{ $child }}</button>
+                        <button data-catid="{{{ $child->id }}}" id="btnSelectVaCategory" style="margin-bottom: 5px;" class="btn btn-success">{{ $child->name }}</button>
                         @endforeach
                     </blockquote>
                 </div>
             </span>
             @elseif (array_key_exists($category->id, $categoryChildren) && Category::countChildren($category->id) == 0)
             <span>
-                <button id="btnSelectVaCategory" style="margin-bottom: 25px;" class="btn btn-info">{{{ $category->name }}}</button>
+                <button data-catid="{{{ $category->id }}}" id="btnSelectVaCategory" style="margin-bottom: 25px;" @if ($category->special == 1) class="btn btn-special" @else class="btn btn-info" @endif>@if ($category->special == 1) <i class="fa fa-rocket fa-fw"></i> @endif{{{ $category->name }}}</button>
             </span>
             @endif
             @endforeach

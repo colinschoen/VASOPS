@@ -495,10 +495,9 @@ class AjaxController extends BaseController {
     }
 
     public function post_getvasbycategory() {
-        $categoryName = Input::get('data');
-        $category = Category::where('name', '=', $categoryName)->first();
-        $categoryId = $category->id;
-        $vas = User::where('categories', 'like','%' . $categoryId . ',%')->where('status', '=', '1')->orderBy('vaname', 'ASC')->get();
+        $id = Input::get('data');
+        $category = Category::findOrFail($id);
+        $vas = User::where('categories', 'like','%' . $id. ',%')->where('status', '=', '1')->orderBy('vaname', 'ASC')->get();
         if (count($vas) == 0) {
             echo '<h4>No Virtual Airlines Found.</h4>';
         }
@@ -509,7 +508,7 @@ class AjaxController extends BaseController {
                 //There is the potential that another number is before the category id and it got put in with this so let's double check this is just for this category
                 $categories = explode(',', $va->categories);
                 array_pop($categories);
-                if (!in_array($categoryId, $categories))
+                if (!in_array($id, $categories))
                     continue;
                 $va->description = html_entity_decode($va->description);
                 $va->vaname = html_entity_decode($va->vaname);

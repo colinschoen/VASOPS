@@ -20,7 +20,7 @@ class Category extends Eloquent {
         $categories = Category::where('parentid', '=', $id)->get();
         $children = array();
         foreach ($categories as $category) {
-            $children[] = $category->name;
+            $children[] = $category;
         }
         return $children;
     }

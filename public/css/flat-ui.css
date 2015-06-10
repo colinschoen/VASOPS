@@ -563,6 +563,9 @@ h6 {
   /*background-color: #16a085;*/
   background-color: #2980B9;
 }
+.btn.btn-special {
+    background-color: rgba(49, 105, 146, 0.68);
+}
 .btn.btn-info {
   background-color: #3498db;
 }

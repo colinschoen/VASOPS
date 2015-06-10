@@ -273,12 +273,13 @@
             $('#vaCategoryAjaxData').hide();
             $('#vaCategoryLoader').fadeIn();
             var categoryName = $(this).text();
+            var catid = $(this).attr('data-catid');
             $('#vaCategoryNameHeader').html(categoryName).slideDown();
             //Make the ajax call to fetch the data
             $.ajax({
                 type: "POST",
                 url: "{{URL::route('ajaxGetVasByCategory')}}",
-                data: { data: categoryName }
+                data: { data: catid }
             })
                 .done(function(received) {
                     //Update the container and remove the loader

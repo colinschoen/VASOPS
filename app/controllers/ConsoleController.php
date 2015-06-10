@@ -732,6 +732,7 @@ class ConsoleController extends BaseController {
 
     public function post_categoriesnew() {
         $name = Input::get('inputCategoryName');
+        $hidden = Input::get('categoryHidden');
         //There is front end validation that name is not empty, but let's make sure someone isn't screwing with us.
         if (empty($name)) {
             return Redirect::route('consolecategories')->with('message', 'Please enter a category name');
@@ -754,6 +755,10 @@ class ConsoleController extends BaseController {
         $category->name = $name;
         if (!empty($parent))
             $category->parentid = $parent;
+        if ($hidden == 1)
+            $category->hidden = 1;
+        else
+            $category->hidden = 0;
         //Save our data
         $category->save();
         return Redirect::route('consolecategories')->with('message', 'New Category Created Successfully');;
