@@ -1350,8 +1350,13 @@ class ConsoleController extends BaseController {
 
     public function get_stats() {
         //Todo in progress
-        $clicks = Click::all()->count();
-        return View::make('console.stats')->with(array("count" => $clicks));
+        $clicks = Click::all();
+        $totalcount = $clicks->count();
+        //Yes this is really messy.....
+        $uniqueclicks = DB::select(DB::raw("SELECT COUNT(DISTINCT ip) FROM clicks"));
+        foreach ($uniqueclicks[0] as $uc)
+            break;
+        return View::make('console.stats')->with(array("uniqueclicks" => $uc, "count" => $totalcount));
     }
 
     public function post_vahiddencategoriessave() {

@@ -16,7 +16,10 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            Total Outbound Clicks: <span class="label label-info">{{{ $count }}}</span>
+            <table class="table table-responsive table-bordered">
+                <tr><td><strong>Total Outbound Clicks:</strong> </td><td><span class="label label-info">{{{ number_format($count) }}}</span></td></tr>
+                <tr><td><strong>Unique Outbound Clicks:</strong> </td><td><span class="label label-info">{{{ number_format($uniqueclicks) }}}</span></td></tr>
+            </table>
         </div>
     </div>
 </div>
