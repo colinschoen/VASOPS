@@ -83,9 +83,12 @@ class VaController extends BaseController {
             $banner = FALSE;
         }
 
+        //Get our news
+        $news = News::orderBy("updated_at", "DESC")->get();
+
 
         //Create our view with the VA, clicks, categories and tickets data.
-        return View::make('va')->with(array('record' => $record, 'clicks' => $clicks, 'tickets' => $tickets, 'categories' => $categories, 'banner' => $banner));
+        return View::make('va')->with(array('news' => $news, 'record' => $record, 'clicks' => $clicks, 'tickets' => $tickets, 'categories' => $categories, 'banner' => $banner));
     }
 
     public function post_uploadbanner() {
