@@ -1,0 +1,13 @@
+Test Project:
+  script:
+  - ls -la
+  tags:
+  except:
+  - tags
+Deploy for production:
+  script:
+  - ls -la
+  type: deploy
+  tags:
+  only:
+  - master
