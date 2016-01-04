@@ -63,6 +63,12 @@
                         </div>
                     </div>
                     <div class="control-group">
+                        <label class="control-label" for="inputVaStartDate">VA Start Date</label>
+                        <div class="controls">
+                            <input name="inputVaStartDate" class="inputWithDatePicker" type="text" id="inputVaStartDate" value="{{$record->vastartdate}}" />
+                        </div>
+                    </div>
+                    <div class="control-group">
                         <label class="control-label" for="inputUrl">URL</label>
                         <div class="controls">
                             <input name="inputUrl" class="" type="text" id="inputUrl" value="{{$record->url}}" />

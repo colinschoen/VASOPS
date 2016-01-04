@@ -600,6 +600,7 @@ class ConsoleController extends BaseController {
         $fieldarray = array();
         $fieldarray['cid'] = 'cid';
         $fieldarray['name'] = 'name';
+        $fieldarray['startdate'] = 'startdate';
         $fieldarray['email'] = 'email';
         $fieldarray['url'] = 'url';
         $fieldarray['linkback url'] = 'vatsimimagepagelink';

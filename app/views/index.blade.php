@@ -84,7 +84,7 @@
     </div>
 </div>
 <div class="control-group">
-    <label class="control-label" for="inputVaStartDate">VA Name</label>
+    <label class="control-label" for="inputVaStartDate">VA Start Date</label>
     <div class="controls">
         <input name="inputVaStartDate" class="inputWithDatePicker" type="text" id="inputVaStartDate" placeholder="VA Start Date" />
     </div>

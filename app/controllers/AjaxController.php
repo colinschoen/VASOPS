@@ -49,6 +49,7 @@ class AjaxController extends BaseController {
         $validator = Validator::make(
             array(
                 'Va Name' => $post['inputVaName'],
+                'Va Start Date' => $post['inputVaStartDate'],
                 'Url' => $post['inputUrl'],
                 'Description' => $post['inputDescription'],
                 'Vatsim Image Page Link' => $post['inputVatsimImagePageLink'],
@@ -61,6 +62,7 @@ class AjaxController extends BaseController {
             ),
             array(
                 'Va Name' => 'required',
+                'Va Start Date' => 'required|date_format:"j F, Y"',
                 'Url' => 'required|url',
                 'Description' => 'required|max:200',
                 'Vatsim Image Page Link' => 'required|url',
@@ -109,6 +111,7 @@ class AjaxController extends BaseController {
                 $vas->password = Hash::make($post['inputPassword']);
             }
             $vas->vaname = $post['inputVaName'];
+            $vas->startdate = $post['inputVaStartDate'];
             $vas->url = $post['inputUrl'];
             $vas->description = $post['inputDescription'];
             $vas->vatsimimagepagelink = $post['inputVatsimImagePageLink'];
@@ -181,7 +184,7 @@ class AjaxController extends BaseController {
                 array(
                     'Cid' => 'required|integer|unique:vas,cid',
                     'Va Name' => 'required',
-                    'Va Start Date' => 'required|date',
+                    'Va Start Date' => 'required|date_format:"j F, Y"',
                     'Url' => 'required|url',
                     'Description' => 'required|max:200',
                     'Vatsim Image Page Link' => 'required|url',
@@ -218,7 +221,7 @@ class AjaxController extends BaseController {
                 array(
                     'Cid' => 'required|integer|unique:vas,cid',
                     'Va Name' => 'required',
-                    'Va Start Date' => 'required|date',
+                    'Va Start Date' => 'required|date_format:"j F, Y"',
                     'Url' => 'required|url',
                     'Description' => 'required|max:200',
                     'Vatsim Image Page Link' => 'required|url',

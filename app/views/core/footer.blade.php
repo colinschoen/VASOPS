@@ -51,7 +51,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        $('.inputVaStartDate').pickadate();
+        $('.inputWithDatePicker').pickadate();
 
         $('.tooltip-bottom').tooltip({
             placement: 'bottom',

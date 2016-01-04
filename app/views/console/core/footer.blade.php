@@ -36,9 +36,13 @@
     <script src="{{ URL::to('/') }}/js/smooth-scroll.js"></script>
     <script src="{{ URL::to('/') }}/ckeditor/ckeditor.js"></script>
     <script src="{{ URL::to('/') }}/js/consoleapplication.js"></script>
+    <script src="{{ URL::to('/') }}/js/picker.js"></script>
+    <script src="{{ URL::to('/') }}/js/picker.date.js"></script>
     <script>
         $(document).ready(function() {
             $('#page-wrapper').fadeIn();
+
+            $('.inputWithDatePicker').pickadate();
 
 
             @if (Session::get('scrollTo') != '')
@@ -174,7 +178,16 @@
             $('#vaNameInputReset').on('click', function() {
                 $('#vaNameInputDiv').hide();
                 $('#vaNameField').fadeIn();
-            })
+            });
+
+            $('#vaStartDateField, #vaStartDateLabel').on('click', function(){
+                $('#vaStartDateField').hide();
+                $('#vaStartDateInputDiv').fadeIn('fast');
+            });
+            $('#vaStartDateInputReset').on('click', function() {
+                $('#vaStartDateInputDiv').hide();
+                $('#vaStartDateField').fadeIn();
+            });
 
             $('#vaEmailField, #vaEmailLabel').on('click', function(){
                 $('#vaEmailField').hide();
@@ -183,7 +196,7 @@
             $('#vaEmailInputReset').on('click', function() {
                 $('#vaEmailInputDiv').hide();
                 $('#vaEmailField').fadeIn();
-            })
+            });
 
             $('#vaUrlField, #vaUrlLabel').on('click', function(){
                 $('#vaUrlField').hide();
@@ -192,7 +205,7 @@
             $('#vaUrlInputReset').on('click', function() {
                 $('#vaUrlInputDiv').hide();
                 $('#vaUrlField').fadeIn();
-            })
+            });
 
             $('#vaVatsimImagePageLinkField, #vaVatsimImagePageLinkLabel').on('click', function(){
                 $('#vaVatsimImagePageLinkField').hide();
@@ -201,16 +214,16 @@
             $('#vaVatsimImagePageLinkInputReset').on('click', function() {
                 $('#vaVatsimImagePageLinkInputDiv').hide();
                 $('#vaVatsimImagePageLinkField').fadeIn();
-            })
+            });
 
             $('#vaCountryField, #vaCountryLabel').on('click', function() {
                 $('#vaCountryField').hide();
                 $('#vaCountryInputDiv').fadeIn();
-            })
+            });
             $('#vaCountryInputReset').on('click', function() {
                 $('#vaCountryInputDiv').hide();
                 $('#vaCountryField').fadeIn();
-            })
+            });
 
             $('#vaDescriptionField, #vaDescriptionLabel').on('click', function(){
                 $('#vaDescriptionField').hide();
@@ -219,7 +232,7 @@
             $('#vaDescriptionInputReset').on('click', function() {
                 $('#vaDescriptionInputDiv').hide();
                 $('#vaDescriptionField').fadeIn();
-            })
+            });
 
             $('#vaUpdatedField').on('click', function(){
                 $('#vaUpdatedField').hide();
@@ -228,7 +241,7 @@
             $('#vaUpdatedInputReset').on('click', function() {
                 $('#vaUpdatedInputDiv').hide();
                 $('#vaUpdatedField').fadeIn();
-            })
+            });
 
             $('#vaCreatedField').on('click', function(){
                 $('#vaCreatedField').hide();
@@ -237,20 +250,20 @@
             $('#vaCreatedInputReset').on('click', function() {
                 $('#vaCreatedInputDiv').hide();
                 $('#vaCreatedField').fadeIn();
-            })
+            });
 
             $('#showAuditInput').on('click', function() {
                 $(this).hide();
                 $('#auditInputFormActions').fadeIn('fast');
                 $('#auditInputForm').slideToggle('fast');
-            })
+            });
             $('#cancelAuditInput').on('click', function() {
                 $('#errorAuditEmpty').hide();
                 $('#auditInputForm').slideToggle('fast');
                 $('#inputAuditLog').removeAttr('disabled');
                 $('#auditInputFormActions').hide();
                 $('#showAuditInput').fadeIn('fast');
-            })
+            });
 
             $('#submitAuditInput').on('click', function() {
                 //Hide our errors, if any.
@@ -279,7 +292,7 @@
                                 $('#auditLogDiv').before('<div class="panel panel-default"><div class="panel-heading"><small>Now - ' + name + '</small></div><div class="panel-body">' + content + '</div></div>');
                         });
                 }
-            })
+            });
 
             $('#bannerUploadSubmit').on('click', function(e) {
                 //Hide error messages that may have been displayed previously

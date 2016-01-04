@@ -88,14 +88,14 @@
                 </td>
             </tr>
             <tr>
-                <td id="vaStartDateLabel"><h4><small>Start Date</small></h4></td>
+                <td id="vaStartDateLabel"><h4><small>startdate</small></h4></td>
                 <td>
-                    <h4 id="vaNameField">{{{ $va->startdate }}}</h4>
+                    <h4 id="vaStartDateField">{{{ $va->startdate }}}</h4>
                     <form>
                         <div class="input-group" style="display: none;" id="vaStartDateInputDiv">
-                            <input class="form-control" id="vaStartDateInput" type="text" value="{{{ $va->startdate }}}" />
+                            <input class="form-control inputWithDatePicker" id="vaStartDateInput" type="text" value="{{{ $va->startdate }}}" />
                                             <span class="input-group-btn">
-                                                <button id="vaStartDateInputSubmit" class="btn btn-success">
+                                                <button id="vaEditInputSubmit" class="btn btn-success">
                                                     Save
                                                 </button>
                                                 <input id="vaStartDateInputReset" type="reset" class="btn btn-warning" value="Cancel"/>
