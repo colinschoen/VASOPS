@@ -140,6 +140,7 @@ class AjaxController extends BaseController {
         $post = array();
         $post['inputCid'] = Input::get('inputCid');
         $post['inputVaName'] = Input::get('inputVaName');
+        $post['inputVaStartDate'] = Input::get('inputVaStartDate');
         $post['inputUrl'] = Input::get('inputUrl');
         $post['inputDescription'] = Input::get('inputDescription');
         $post['inputVatsimImagePageLink'] = Input::get('inputVatsimImagePageLink');
@@ -166,6 +167,7 @@ class AjaxController extends BaseController {
                 array(
                     'Cid' => $post['inputCid'],
                     'Va Name' => $post['inputVaName'],
+                    'Va Start Date' => $post['inputVaStartDate'],
                     'Url' => $post['inputUrl'],
                     'Description' => $post['inputDescription'],
                     'Vatsim Image Page Link' => $post['inputVatsimImagePageLink'],
@@ -179,6 +181,7 @@ class AjaxController extends BaseController {
                 array(
                     'Cid' => 'required|integer|unique:vas,cid',
                     'Va Name' => 'required',
+                    'Va Start Date' => 'required|date',
                     'Url' => 'required|url',
                     'Description' => 'required|max:200',
                     'Vatsim Image Page Link' => 'required|url',
@@ -200,6 +203,7 @@ class AjaxController extends BaseController {
                 array(
                     'Cid' => $post['inputCid'],
                     'Va Name' => $post['inputVaName'],
+                    'Va Start Date' => $post['inputVaStartDate'],
                     'Url' => $post['inputUrl'],
                     'Description' => $post['inputDescription'],
                     'Vatsim Image Page Link' => $post['inputVatsimImagePageLink'],
@@ -214,6 +218,7 @@ class AjaxController extends BaseController {
                 array(
                     'Cid' => 'required|integer|unique:vas,cid',
                     'Va Name' => 'required',
+                    'Va Start Date' => 'required|date',
                     'Url' => 'required|url',
                     'Description' => 'required|max:200',
                     'Vatsim Image Page Link' => 'required|url',
@@ -280,6 +285,7 @@ class AjaxController extends BaseController {
             //Hash our password
             $vas->password = Hash::make($post['inputPassword']);
             $vas->vaname = $post['inputVaName'];
+            $vas->startdate = $post['inputVaStartDate'];
             $vas->url = $post['inputUrl'];
             $vas->description = $post['inputDescription'];
             $vas->vatsimimagepagelink = $post['inputVatsimImagePageLink'];

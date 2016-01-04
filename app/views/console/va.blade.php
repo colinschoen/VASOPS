@@ -88,6 +88,23 @@
                 </td>
             </tr>
             <tr>
+                <td id="vaStartDateLabel"><h4><small>Start Date</small></h4></td>
+                <td>
+                    <h4 id="vaNameField">{{{ $va->startdate }}}</h4>
+                    <form>
+                        <div class="input-group" style="display: none;" id="vaStartDateInputDiv">
+                            <input class="form-control" id="vaStartDateInput" type="text" value="{{{ $va->startdate }}}" />
+                                            <span class="input-group-btn">
+                                                <button id="vaStartDateInputSubmit" class="btn btn-success">
+                                                    Save
+                                                </button>
+                                                <input id="vaStartDateInputReset" type="reset" class="btn btn-warning" value="Cancel"/>
+                                            </span>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <tr>
                 <td id="vaEmailLabel"><h4><small>email</small></h4></td><td><h4 id="vaEmailField">{{{ $va->email }}}</h4>
                     <form>
                         <div class="input-group" style="display: none;" id="vaEmailInputDiv">

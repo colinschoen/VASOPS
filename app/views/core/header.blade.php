@@ -7,6 +7,9 @@
     {{ HTML::style('css/flat-ui.css') }}
     {{ HTML::style('css/custom.css') }}
     {{ HTML::style('css/plugins/font-awesome/css/font-awesome.css') }}
+    {{ HTML::style('css/plugins/font-awesome/css/font-awesome.css') }}
+    {{ HTML::style('css/plugins/picker/classic.css') }}
+    {{ HTML::style('css/plugins/picker/classic.date.css') }}
     <!-- Vatsim Favicon -->
     <link rel="shortcut icon" href="images/favicon.ico">
 

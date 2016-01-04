@@ -46,8 +46,12 @@
 <script src="js/application.js"></script>
 <script src="ckeditor/ckeditor.js"></script>
 <script src="js/smooth-scroll.js"></script>
+<script src="js/picker.js"></script>
+<script src="js/picker.date.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $('.inputVaStartDate').pickadate();
 
         $('.tooltip-bottom').tooltip({
             placement: 'bottom',
