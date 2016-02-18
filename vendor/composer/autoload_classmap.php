@@ -1433,6 +1433,7 @@ return array(
     'Symfony\\Component\\Translation\\Translator' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Translator.php',
     'Symfony\\Component\\Translation\\TranslatorInterface' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/TranslatorInterface.php',
     'Symfony\\Component\\Translation\\Writer\\TranslationWriter' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Writer/TranslationWriter.php',
+    'SystemEmailTemplate' => $baseDir . '/app/models/SystemEmailTemplate.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'Ticket' => $baseDir . '/app/models/Ticket.php',
     'TicketReply' => $baseDir . '/app/models/TicketReply.php',
